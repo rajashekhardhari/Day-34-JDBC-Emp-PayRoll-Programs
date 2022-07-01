@@ -16,24 +16,23 @@ public class JDBCEmpPayRollPrograms {
 
 			Statement stmt = connection.createStatement();
 
-			stmt.execute("insert into employeePayroll value(11,'Rajesh','200000','1996-01-01','M')");
+			ResultSet result = stmt.executeQuery("select * from payrollService;");
+
+			while (result.next()) {
+				System.out.println(result.getInt(1) + "    " + result.getString(2) + "   " + result.getString(3) + "   "
+						+ result.getString(4) + "   " + result.getString(5));
+			}
 
 		} catch (SQLException e) {
-
-			System.out.println("Unable to connect to DB...");
 			
-			listDrivers();
-
+			System.out.println("Unable to connect to DB...");
+		
 		} finally {
-
+		
 			connection.close();
+		
 		}
 
-	}
-
-	private static void listDrivers() {
-		// TODO Auto-generated method stub
-		
 	}
 
 }
